@@ -1,0 +1,177 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(198, 213, 210);
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;              
+    z-index: 1000; 
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: red;
+}
+
+.nav-left {
+    display: flex;
+}
+
+.nav-right {
+    display: flex;
+}
+
+/* Welcome Section */
+.welcome {
+    text-align: center;
+    margin: 30px 0;
+}
+.welcome h2 {
+    color: #333;
+}
+
+/* Stats Cards */
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    flex-wrap: wrap; /* responsive wrap */
+}
+.stat-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+}
+.stat-card h3 {
+    margin-bottom: 10px;
+}
+
+/* Announcements */
+.announcements {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+.announcements h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.announcements ul {
+    list-style: none;
+    padding: 0;
+}
+.announcements li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Quick Links / Buttons */
+.quick-links {
+    text-align: center;
+    margin: 20px;
+}
+.quick-links .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+.quick-links .btn:hover {
+    background-color: red;
+}
+
+/* Chart Container */
+.chart-container {
+    width: 80%;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Tables - Students, Teachers, Courses */
+.student-list, .teacher-list, .course-list {
+    width: 80%;
+    margin: 20px auto;
+    overflow-x: auto; /* horizontal scroll on small screens */
+}
+
+.student-table, .teacher-table, .course-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.student-table th, .student-table td,
+.teacher-table th, .teacher-table td,
+.course-table th, .course-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.student-table th, .teacher-table th, .course-table th {
+    background-color: #333;
+    color: white;
+}
+
+.student-table tr:nth-child(even),
+.teacher-table tr:nth-child(even),
+.course-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.student-table tr:hover,
+.teacher-table tr:hover,
+.course-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .stats-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    nav a {
+        margin: 5px 0;
+    }
+}

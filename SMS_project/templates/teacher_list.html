@@ -1,0 +1,17 @@
+<h2>Teachers</h2>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Course</th>
+    </tr>
+    {% for teacher in teachers %}
+    <tr>
+        <td>{{ teacher.name }}</td>
+        <td>{{ teacher.email }}</td>
+        <td>{{ teacher.phone }}</td>
+        <td>{{ teacher.course.name }}</td>
+    </tr>
+    {% endfor %}
+</table>

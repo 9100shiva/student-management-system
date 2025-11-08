@@ -1,0 +1,53 @@
+{% load static %}
+<html>
+<head>
+    <title>Home - Student Management System</title>
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+<body>
+    
+  <nav>
+    <div class="nav-left">
+        <a href="{% url 'aboutus' %}">About Us</a>
+        <a href="{% url 'contactus' %}">Contact Us</a>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+    </div>
+    <div class="nav-right">
+        <a href="{% url 'signup' %}">Signup</a>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+  
+
+</nav>
+    <!-- Welcome Message -->
+    <center>
+        {% if user.is_authenticated %}
+            <h2>Welcome</h2>
+        {% else %}
+            <h2>Welcome to the Student Management System</h2>
+            <p>Please login or signup to access full features.</p>
+        {% endif %}
+    </center>
+
+
+    <!-- Latest Announcements -->
+ <div class="announcements">
+    <h2>Latest Announcements</h2>
+    <ul>
+        {% for announcement in announcements %}
+            <li>{{ announcement.title }} - {{ announcement.created_at }}</li>
+        {% empty %}
+            <li>No announcements yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Student Management System. All rights reserved.</p>
+        <p>Contact: admin@sms.com</p>
+    </footer>
+</body>
+</html>
+

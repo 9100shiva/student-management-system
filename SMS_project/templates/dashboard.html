@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Student Management System</title>
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-left">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'aboutus' %}">About Us</a>
+            <a href="{% url 'contactus' %}">Contact Us</a>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+        </div>
+        <div class="nav-right">
+            {% if user.is_authenticated %}
+                <span>Welcome, {{ user.username }}</span>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'signup' %}">Signup</a>
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Stats Cards -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <h3>Total Students</h3>
+            <p>{{ total_students }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Teachers</h3>
+            <p>{{ total_teachers }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Courses</h3>
+            <p>{{ total_courses }}</p>
+        </div>
+    </div>
+
+    <!-- Announcements -->
+    <div class="announcements">
+        <h3>Recent Announcements</h3>
+        <ul>
+            {% for an in announcements %}
+                <li>{{ an.title }} - {{ an.date_posted|date:"d M Y" }}</li>
+            {% empty %}
+                <li>No announcements yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Students Table -->
+    <div class="student-list">
+        <h3>Students</h3>
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Email</th>
+                    <th>Course Name</th>
+                    <th>Course ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>
+                        {% if student.user %}
+                            {{ student.user.get_full_name|default:student.user.username }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    </td>
+                    <td>{{ student.roll_no }}</td>
+                    <td>{{ student.user.email }}</td>
+                    <td>{% if student.course %}{{ student.course.name }}{% else %}—{% endif %}</td>
+                    <td>{% if student.course %}{{ student.course.id }}{% else %}—{% endif %}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No students available</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Teachers Table -->
+    <div class="teacher-list">
+        <h3>Teachers</h3>
+        <table class="teacher-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for teacher in teachers %}
+                <tr>
+                    <td>
+                        {% if teacher.user %}
+                            {{ teacher.user.get_full_name|default:teacher.user.username }}
+                        {% else %}
+                            {{ teacher.name|default:"—" }}
+                        {% endif %}
+                    </td>
+                    <td>{{ teacher.user.email|default:teacher.email }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2">No teachers available</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Courses Table -->
+    <div class="course-list">
+        <h3>Courses</h3>
+        <table class="course-table">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Course Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.code }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2">No courses available</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Student Management System. All rights reserved.</p>
+        <p>Contact: admin@sms.com</p>
+    </footer>
+
+</body>
+</html>

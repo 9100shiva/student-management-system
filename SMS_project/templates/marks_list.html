@@ -1,0 +1,19 @@
+<h2>Student Marks</h2>
+<table border="1">
+    <tr>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Exam Date</th>
+    </tr>
+    {% for mark in marks %}
+    <tr>
+        <td>{{ mark.student.name }}</td>
+        <td>{{ mark.course.name }}</td>
+        <td>{{ mark.subject }}</td>
+        <td>{{ mark.marks_obtained }}/{{ mark.max_marks }}</td>
+        <td>{{ mark.exam_date }}</td>
+    </tr>
+    {% endfor %}
+</table>

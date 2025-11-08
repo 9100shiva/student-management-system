@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us - Student Management System</title>
+    <link href="{% static 'css/aboutus.css' %}" rel="stylesheet">
+</head>
+<body>
+
+   <nav>
+    <div class="nav-left">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'aboutus' %}">About Us</a>
+        <a href="{% url 'contactus' %}">Contact Us</a>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+    </div>
+    <div class="nav-right">
+        <a href="{% url 'signup' %}">Signup</a>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+</nav>
+
+
+    <!-- About Us Content -->
+    <div class="about-container">
+        <h1>About Student Management System</h1>
+        <p>
+            The Student Management System (SMS) is a modern web-based platform built to 
+            help schools, colleges, and universities manage their day-to-day operations 
+            with ease. From student admissions to performance tracking, our system is 
+            designed to improve efficiency and reduce paperwork.
+        </p>
+        <center>
+        <!-- Image Banner -->
+        <div class="about-banner">
+            <img src="{% static 'images/students.jpg' %}" alt="Students" width="300" height="200" />
+        </div>
+        </center>
+        <h2>Our Mission</h2>
+        <p>
+            To empower educational institutions with digital tools that ensure better 
+            transparency, effective communication, and smart decision-making for students, 
+            faculty, and administrators.
+        </p>
+
+        <h2>Key Features</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>Data Management</h3>
+                <h3>Student & Faculty Data</h3>
+                <p>Manage student and faculty records in a secure and organized manner.</p>
+            </div>
+            <div class="feature">
+                <img src="{% static 'images/attendance.png' %}" alt="Attendance" />
+                <h3>Attendance Tracking</h3>
+                <p>Track and analyze attendance with ease and accuracy.</p>
+            </div>
+            <div class="feature">
+                <img src="{% static 'images/exam.png' %}" alt="Exams" />
+                <h3>Exams & Results</h3>
+                <p>Plan, conduct, and publish exam results digitally.</p>
+            </div>
+            <div class="feature">
+                <img src="{% static 'images/dashboard.png' %}" alt="Dashboard" />
+                <h3>Interactive Dashboard</h3>
+                <p>Quick access to important data for students, faculty, and admins.</p>
+            </div>
+        </div>
+
+       
+        <h2>Contact / Support</h2>
+        <p>For any queries or support, contact: 
+            <a href="mailto:support@sms.com">support@sms.com</a>
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Student Management System. All rights reserved.</p>
+        <p>Contact: admin@sms.com</p>
+    </footer>
+
+</body>
+</html>
+
